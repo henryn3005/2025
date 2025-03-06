@@ -10,18 +10,10 @@ class Human : public Player {
     Human(std::string name);
     Human();
 
-    char makeMove() override {
-        std::cout << "Enter Move: " << std::endl;
-        std::cin >> move;
+    char makeMove();
 
-        while(move != 'R' && move != 'P' && move != 'S') { 
-            std::cout << "invalid, choose either R, P, or S"; 
-            std::cin >> move;}
-
-    return move;
-    }
-    std::string getName() override {return name;}
-
+    std::string getName();
+    
 };
 
 #endif
