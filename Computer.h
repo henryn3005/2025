@@ -7,10 +7,10 @@ class Computer : public Player {
     std::string name;
     char move;
     public:
-    Computer() : name("Computer"), move('R') {}
+    Computer();
+    char makeMove();
 
-    
-    char makeMove()  { return move;}
+    std::string getName();
 
 };
 
