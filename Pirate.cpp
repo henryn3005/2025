@@ -1,4 +1,4 @@
-#include <Pirate.h>
+#include "Pirate.h"
 
 Pirate::Pirate() : name("Pirate") {}
 

@@ -1,7 +1,7 @@
 #ifndef ROCK_H
 #define ROCK_H
 
-#include <Move.h>
+#include "Move.h"
 
 class Rock : public Move {
     std::string name;

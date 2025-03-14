@@ -1,7 +1,7 @@
 #ifndef PAPER_H
 #define PAPER_H
 
-#include <Move.h>
+#include "Move.h"
 
 class Paper : public Move {
     std::string name;

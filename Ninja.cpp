@@ -1,4 +1,4 @@
-#include <Ninja.h>
+#include "Ninja.h"
 
 Ninja::Ninja() : name("Ninja") {}
 
