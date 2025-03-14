@@ -5,12 +5,12 @@
 
 class Human : public Player {
     std::string name;
-    char move;
+    std::string move;
     public:
     Human(std::string name);
     Human();
 
-    char makeMove();
+    Move* makeMove();
 
     std::string getName();
     

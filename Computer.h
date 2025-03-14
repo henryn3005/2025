@@ -2,13 +2,13 @@
 #define COMPUTER_H
 
 #include "Player.h"
+#include "Rock.h"
 
 class Computer : public Player {
     std::string name;
-    char move;
     public:
     Computer();
-    char makeMove();
+    Move* makeMove();
 
     std::string getName();
 

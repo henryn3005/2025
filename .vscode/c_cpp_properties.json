@@ -6,7 +6,8 @@
                 "/usr/include/c++/11",
                 "/usr/local/include",
                 "/usr/include",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/home/henry/Practical/Uni/"
             ],
             "defines": [],
             "cStandard": "c17",

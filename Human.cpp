@@ -3,16 +3,21 @@
 Human::Human(std::string name) : name(name) {}
 Human::Human() : name("Human") {}
 
-char Human::makeMove() {
+Move* Human::makeMove() {
     std::cout << "Enter Move: " << std::endl;
     std::cin >> move;
+    while (true) {
+        if (move == "Rock") return new Rock();
+        if (move == "Paper") return new Paper();
+        if (move == "Scissors") return new Scissors();
+        if (move == "Robot") return new Robot();
+        if (move == "Monkey") return new Monkey();
+        if (move == "Pirate") return new Pirate();
+        if (move == "Ninja") return new Ninja();
+        if (move == "Zombie") return new Zombie();
 
-    while(move != 'R' && move != 'P' && move != 'S') {
-        std::cout << "invalid, choose either R, P, or S" << std::endl;
-        std::cin >> move;
+        std::cout << "Invalid Move";
     }
-
-    return move;
 }
 
 std::string Human::getName() { return name; }
