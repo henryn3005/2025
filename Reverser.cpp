@@ -1,0 +1,23 @@
+#include "Reverser.h"
+
+int Reverser::reverseDigit(int value) {
+    if (value < 0){
+        return -1;
+    }
+    return reverseDigit(value,0);
+}
+
+int Reverser::reverseDigit(int value, int acc) {
+    if (value == 0){
+        return acc;
+    }
+    return reverseDigit(value / 10, acc * 10 + value % 10);
+}
+
+
+std::string Reverser::reverseString(std::string characters) {
+    if (characters.size() == 0){
+        return characters;
+    }
+    return reverseString(characters.substr(1)) + characters[0];
+}
