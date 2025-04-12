@@ -4,19 +4,19 @@
 #include "RecursiveBinarySearch.h"
 
 #include <iostream>
+#include <sstream>
+#include <vector>
 
 int main() {
-    int size;
-    std::cout << "How big do you want your list?" << std::endl;
-    std::cin >> size;
+    std::string line;
+    std::getline(std::cin, line);
 
+    std::istringstream iss(line);
     std::vector<int> list;
+    int size;
 
-    for (int i = 0; i < size; i++){
-        int choice;
-        std::cout << "Enter a number: " << std::endl;
-        std::cin >> choice;
-        list.push_back(choice);
+    while (iss >> size) {
+        list.push_back(size);
     }
 
     QuickSort q;
