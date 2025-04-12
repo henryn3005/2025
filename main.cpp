@@ -25,6 +25,14 @@ int main() {
 
     RecursiveBinarySearch r;
 
+    int result = r.search(sorted,1);
+
+    if (result == 1){
+        std::cout << 'true';
+    } else {
+        std::cout << 'false';
+    }
+
     
     for (auto i : sorted){
         std::cout << i << " ";
