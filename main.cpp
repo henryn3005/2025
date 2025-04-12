@@ -28,9 +28,9 @@ int main() {
     int result = r.search(sorted,1);
 
     if (result == 1){
-        std::cout << 'true';
+        std::cout << "true";
     } else {
-        std::cout << 'false';
+        std::cout << "false";
     }
 
     
