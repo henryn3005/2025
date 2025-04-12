@@ -28,8 +28,8 @@ int main() {
     int result = r.search(sorted,1);
 
     if (result == 1){
-        std::cout << "true";
-    } else {
+        std::cout << "true ";
+    } else if (result == 0){
         std::cout << "false";
     }
 
