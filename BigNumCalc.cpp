@@ -5,6 +5,14 @@
 #include <string>
 #include <list>
 
+BigNumCalc::BigNumCalc() {
+
+}
+
+BigNumCalc::~BigNumCalc() {
+    
+}
+
 std::list<int> BigNumCalc::buildBigNum(std::string numString) {
     std::list<int> newlist;
     if (numString.empty()) {
