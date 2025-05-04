@@ -7,9 +7,8 @@ LinkedList::LinkedList() {
 }
 
 LinkedList::LinkedList(int* array, int len) {
-    for (int i = len - 1; i >= 0; i--){
-        Node* newNode = new Node(array[i],head);
-        head = newNode;
+    for (int i = 0; i < len; i++) {
+        insertAtEnd(array[i]);
     }
 }
 
@@ -24,7 +23,7 @@ Node* LinkedList::traverse(unsigned int index) {
     Node* current = head;
 
     while (current != nullptr && position < index){
-        current = current->link;
+        current = current->getLink();
         position++;
     }
 
@@ -37,7 +36,7 @@ void LinkedList::deleteFromFront() {
     }
 
     Node* temp = head;
-    head = head->link;
+    head = head->getLink();
     delete temp;
 }
 
@@ -51,10 +50,10 @@ void LinkedList::insertAtEnd(int newdata) {
 
     Node* current = head;
 
-    while (current->link != nullptr) {
-        current = current->link;
+    while (current->getLink() != nullptr) {
+        current = current->getLink();
     }
-    current->link = newNode;
+    current->setLink(newNode);
 }
 
 void LinkedList::insertPosition(int pos, int newNum) {
@@ -65,12 +64,12 @@ void LinkedList::insertPosition(int pos, int newNum) {
     }
 
     Node* traversed = traverse(pos - 2);
-    if (traversed == nullptr || traversed->link == nullptr){
+    if (traversed == nullptr || traversed->getLink() == nullptr){
         insertAtEnd(newNum);
         return;
     }
-    Node* newNode = new Node(newNum,traversed->link);
-    traversed->link = newNode;
+    Node* newNode = new Node(newNum,traversed->getLink());
+    traversed->setLink(newNode);
 }
 
 bool LinkedList::deletePosition(int pos) {
@@ -83,12 +82,12 @@ bool LinkedList::deletePosition(int pos) {
         return true;
     }
     Node* beforetraversed = traverse(pos - 2);
-    if (beforetraversed == nullptr || beforetraversed->link == nullptr) {
+    if (beforetraversed == nullptr || beforetraversed->getLink() == nullptr) {
         return false;
     }
 
-    Node* toDelete = beforetraversed->link;
-    beforetraversed->link = toDelete->link;
+    Node* toDelete = beforetraversed->getLink();
+    beforetraversed->setLink(toDelete->getLink());
     
     delete toDelete;
 
@@ -101,7 +100,7 @@ int LinkedList::get(int pos) {
         return std::numeric_limits < int >::max();
     }
 
-    return get->data;
+    return get->getData();
 }
 
 int LinkedList::search(int target) {
@@ -109,10 +108,10 @@ int LinkedList::search(int target) {
     Node* current = head;
 
     while (current != nullptr){
-        if (current->data == target){
+        if (current->getData() == target){
             return position;
         }
-        current = current->link;
+        current = current->getLink();
         position++;
     }
 
@@ -128,11 +127,11 @@ void LinkedList::printList() {
     std::cout << "[";
 
     while (current != nullptr) {
-        std::cout << current->data;
-        if (current->link != nullptr){
+        std::cout << current->getData();
+        if (current->getLink() != nullptr){
             std::cout << " ";
         }
-        current = current->link;
+        current = current->getLink();
     }
     std::cout << "]" << std::endl;
 }
