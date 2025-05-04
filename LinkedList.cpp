@@ -7,8 +7,16 @@ LinkedList::LinkedList() {
 }
 
 LinkedList::LinkedList(int* array, int len) {
-    for (int i = 0; i < len; i++) {
-        insertAtEnd(array[i]);
+    head = nullptr;
+    if (len == 0) return;
+
+    head = new Node(array[0], nullptr);
+    Node* current = head;
+
+    for (int i = 1; i < len; ++i) {
+        Node* newNode = new Node(array[i], nullptr);
+        current->setLink(newNode);
+        current = newNode;
     }
 }
 
@@ -19,7 +27,7 @@ LinkedList::~LinkedList() {
 }
 
 Node* LinkedList::traverse(unsigned int index) {
-    int position = 0;
+    unsigned int position = 0;
     Node* current = head;
 
     while (current != nullptr && position < index){
