@@ -58,40 +58,45 @@ void LinkedList::insertAtEnd(int newdata) {
 }
 
 void LinkedList::insertPosition(int pos, int newNum) {
-    if (pos <= 1) {
+    if (pos <= 1 || head == nullptr) {
         Node* newNode = new Node(newNum,head);
         head = newNode;
+        return;
     }
 
-    Node* traversed = traverse(pos);
-    if (traversed == nullptr){
+    Node* traversed = traverse(pos - 2);
+    if (traversed == nullptr || traversed->link == nullptr){
         insertAtEnd(newNum);
+        return;
     }
     Node* newNode = new Node(newNum,traversed->link);
     traversed->link = newNode;
 }
 
 bool LinkedList::deletePosition(int pos) {
-    Node* traversed = traverse(pos);
-    if (traversed == nullptr){
+    if (pos < 1 || head == nullptr){
         return false;
     }
 
-    if (pos == 0){
+    if (pos == 1){
         deleteFromFront();
         return true;
     }
-    Node* beforetraversed = traverse(pos-1);
+    Node* beforetraversed = traverse(pos - 2);
+    if (beforetraversed == nullptr || beforetraversed->link == nullptr) {
+        return false;
+    }
 
-    beforetraversed->link = traversed->link;
-
-    delete traversed;
+    Node* toDelete = beforetraversed->link;
+    beforetraversed->link = toDelete->link;
+    
+    delete toDelete;
 
     return true;
 }
 
 int LinkedList::get(int pos) {
-    Node* get = traverse(pos);
+    Node* get = traverse(pos - 1);
     if (get == nullptr) {
         return std::numeric_limits < int >::max();
     }
@@ -100,7 +105,7 @@ int LinkedList::get(int pos) {
 }
 
 int LinkedList::search(int target) {
-    int position = 0;
+    int position = 1;
     Node* current = head;
 
     while (current != nullptr){
