@@ -63,13 +63,16 @@ void LinkedList::insertPosition(int pos, int newNum) {
         return;
     }
 
-    Node* traversed = traverse(pos - 2);
-    if (traversed == nullptr || traversed->getLink() == nullptr){
+    Node* prev = traverse(pos - 2);
+    Node* newNode;
+
+    if (prev == nullptr || prev->getLink() == nullptr) {
         insertAtEnd(newNum);
         return;
     }
-    Node* newNode = new Node(newNum,traversed->getLink());
-    traversed->setLink(newNode);
+
+    newNode = new Node(newNum, prev->getLink());
+    prev->setLink(newNode);
 }
 
 bool LinkedList::deletePosition(int pos) {
@@ -133,5 +136,5 @@ void LinkedList::printList() {
         }
         current = current->getLink();
     }
-    std::cout << "]" << std::endl;
+    std::cout << "]";
 }
