@@ -1,6 +1,6 @@
 #include "Patron.h"
 
-Patron::Patron() : patronID(-1) {}
+Patron::Patron() : patronID(0) {}
 
 Patron::Patron(int patronID) : patronID(patronID) {}
 
