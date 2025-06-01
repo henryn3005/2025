@@ -14,7 +14,7 @@ void DocumentManager::addDocument(std::string name, int id, int license_limit) {
     if (auto search = nametoID.find(name); search != nametoID.end()) {
         return search->second;
     } else {
-        return -1;
+        return 0;
     }
 }
 bool DocumentManager::borrowDocument(int docid, int patronID) {
