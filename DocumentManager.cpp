@@ -5,11 +5,13 @@ void DocumentManager::addDocument(std::string name, int id, int license_limit) {
     documentcontainer[id] = newdoc;
     nametoID[name] = id;
 }
-    void DocumentManager::addPatron(int patronID) {
+
+void DocumentManager::addPatron(int patronID) {
     Patron newpatron(patronID);
     patroncontainer[patronID] = newpatron;
-    }
-    int DocumentManager::search(std::string name) {
+}
+
+int DocumentManager::search(std::string name) {
 
     if (auto search = nametoID.find(name); search != nametoID.end()) {
         return search->second;
@@ -17,6 +19,7 @@ void DocumentManager::addDocument(std::string name, int id, int license_limit) {
         return 0;
     }
 }
+
 bool DocumentManager::borrowDocument(int docid, int patronID) {
 
     if (documentcontainer.find(docid) == documentcontainer.end()) {
